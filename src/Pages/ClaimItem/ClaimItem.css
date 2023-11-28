@@ -1,0 +1,38 @@
+.claim-item.card {
+  border-radius: 0;
+  box-shadow: none;
+}
+.claim-item .card-tags {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.claim-item .card-tags div {
+  background-color: white;
+}
+.claim-item .card-footer {
+  padding: 2px;
+}
+.claim-item h1 {
+  font-size: 1rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+.claim-item .collectitem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.claim-item .collectitem img{
+    width: 16rem;
+}
+.claim-item .collectitem h1 {
+  color: #1f41bb;
+  font-family: Poppins;
+  font-size: 1.6875rem;
+  font-weight: 600;
+}
+.claim-item .collectitem b{
+    color: var(--secondary-color);
+}

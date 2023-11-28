@@ -1,0 +1,38 @@
+
+.navbar-phone{
+    color: var(--blue);
+    display: none;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.navbar-phone a{
+    padding: 0 0.7rem;
+    margin: 0.7rem 0;
+    position: relative;
+}
+.navbar-phone a.active::after{
+    position: absolute;
+    content: " ";
+    background-color: black;
+    left: 25%;
+    right: 25%;
+    bottom: -3px;
+    height: 3px;
+    border-radius: 4px;
+}
+.navbar-phone .subnav .links{
+    bottom: 100%;
+    left: 50%;
+    top: unset;
+    transform: translateX(-50%) translateY(-25%);
+}
+.navbar-phone .subnav .links::before{
+    top: 100%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+@media only screen and (max-width: 768px) {
+   .navbar-phone{
+    display: flex;
+   } 
+}
