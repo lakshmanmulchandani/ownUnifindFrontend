@@ -50,7 +50,7 @@ const Login = () => {
           userEmail: "",
           password: "",
         });
-        navigate("/details");
+        navigate("/");
       }
       else {
         alert(response.data.message)

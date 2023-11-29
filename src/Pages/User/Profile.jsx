@@ -58,8 +58,8 @@ const token = JSON.parse(tokenString);
         const getdata = async() =>
         {
             
-
           let user;
+          console.log("function is triggered")
             const tokenString = localStorage.getItem('token'); 
             const token = JSON.parse(tokenString);
                   try {

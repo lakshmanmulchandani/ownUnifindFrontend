@@ -47,7 +47,7 @@ function App() {
 
     const ltoken = localStorage.getItem("token");
     if (!ltoken && !token) {
-      navigate("/login");
+      navigate("/Welcome");
     } else if (ltoken) {
       settoken(ltoken);
     }
