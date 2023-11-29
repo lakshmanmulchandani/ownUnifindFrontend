@@ -3,6 +3,7 @@ import App from "./App";
 
 
 import Feed from "./Pages/Feed/Feed"
+import Welcome from "./Pages/Welcome";
 import Comments from "./Pages/Comments/Comments"
 import Report from "./Pages/Report/Report"
 import ClaimItem from "./Pages/ClaimItem/ClaimItem"
@@ -63,5 +64,9 @@ export const router = createBrowserRouter([
   {
     path : "ending",
     element:<Ending/>
+  },
+  {
+    path : "welcome",
+    element:<Welcome/>
   }
 ]);

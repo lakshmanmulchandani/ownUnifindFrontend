@@ -146,6 +146,32 @@ font-weight: 500;
 
 
 
+.welcome-buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    /* width: 100%; */
+    flex-direction: column;
+}
+
+
+.welcome-btn {
+    width: 330px;
+    font-size: 20px;
+    background-color: blue;
+    color: white;
+    padding: 14px;
+    margin-top: 20px;
+    height: fit-content;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+
+
+
 @media (max-width: 868px) {
     .signup-heading {
         margin-top: 50px;
@@ -155,6 +181,17 @@ font-weight: 500;
    
     .signup-heading img{
         display: none;
+    }
+
+    .welcome-buttons-wrapper {
+        flex-direction: row;
+        max-width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .welcome-btn {
+        max-width: 30%;
+
     }
     
 }
