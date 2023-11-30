@@ -3,17 +3,26 @@ import "./profile.css"
 import { useState } from 'react'
 import { BACKEND_URL } from '../../constants'
 import Field from './Field'
-import {useNavigate} from "react-router-dom"
+import {useNavigate, useOutletContext} from "react-router-dom"
 import axios from 'axios'
 
 
-const Profile = () => {
-    const [name,setname] = useState("")
-    const [email,setemail] = useState("")
-    const [phone,setphone] = useState("")
-    const [orgId,setorgId] = useState("")
-    const [password,setpassword] = useState("")
-    const [id,setId] = useState("")
+const Profile = (props) => {
+  const outletcontext = useOutletContext();
+   const {name,setname,email,setemail,orgId,setorgId,phone,setphone,id,setId,password,setpassword} = outletcontext
+    // const name = props.name;
+    // const setname = props.setname;
+    // const email = props.email;
+    // const setemail = props.setemail;
+    // const orgId = props.orgId;
+    // const setorgId = props.setorgId;
+    // const phone = props.phone;
+    // const setphone = props.setphone;
+    // const id = props.id;
+    // const setId = props.setid;
+    // const password = props.password;
+    // const setpassword = props.setpassword;
+
     const navigate = useNavigate();
 
     const logOut = () => {
@@ -51,65 +60,7 @@ const token = JSON.parse(tokenString);
 
 
 
-
-    useEffect(() => {
-      console.log("data")
-        
-        const getdata = async() =>
-        {
-            
-          let user;
-          console.log("function is triggered")
-            const tokenString = localStorage.getItem('token'); 
-            const token = JSON.parse(tokenString);
-                  try {
-                    const api = axios.create({
-                
-                      baseURL: BACKEND_URL, 
-                      headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json', 
-                      },
-                    });
-                    
-                    const res = await  api.get(`./user`)
-                     user = res.data.user
-            
-                  } catch (error) {
-                    console.log(error.message)
-                  }
-
-
-        if (user) {
-            try {
-              
-              const userDataObject = user;
-              console.log(userDataObject)
-              if(userDataObject.userEmail)
-              {
-                  setemail(userDataObject.userEmail)
-              }
-              else {
-                  setemail("Not Available")
-              }
-              console.log(userDataObject.userName)
-              setorgId(userDataObject.orgId);
-              setname(userDataObject.userName);
-              setphone(userDataObject.phoneNO);
-              setpassword("*******")
-              setId(userDataObject._id)
-              console.log(id)
-          
-              
-            } catch (error) {
-              console.error('Error parsing user data:', error);
-            }
-          }
-        }
-      
-    getdata()
-      
-      }, []); 
+ 
     
 
 
@@ -143,7 +94,7 @@ const token = JSON.parse(tokenString);
         <Field id = {id} icon = {user} val = "userName"  labelName = "Your Name" placeholder="Login Person Name" state = {name} setstate = {setname}  />
         <Field  id = {id} icon = {envlope} val = "userEmail"  labelName = "Email" placeholder="email@email.com" state = {email} setstate = {setemail}  />
 
-        <Field  id = {id} icon = {pho} val = "PhoneNO"  labelName = "Phone" placeholder="Enter your phone number" state = {phone} setstate = {setphone}  />
+        <Field  id = {id} icon = {pho} val = "phoneNO"  labelName = "phone" placeholder="Enter your phone number" state = {phone} setstate = {setphone}  />
         <Field  id = {id} icon = {building} val = "orgId" labelName = "Organisation Number" placeholder="Organisation Number" state = {orgId} setstate = {setorgId}  />
         <Field  id = {id} icon = {unlock} val = "password"  labelName = "password" placeholder="Password" state = {password} setstate = {setpassword}  />
 
