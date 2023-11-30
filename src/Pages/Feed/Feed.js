@@ -39,12 +39,6 @@ function Feed() {
 
   return (
     <div className="feed">
-    {location.search === "?search=true" ?<div className="search">
-      <div className="icon-container">
-        <FaSearch className="icon" />
-      </div>
-      <input value={searchInput} onChange={handleSearchInput} type="text" placeholder="Search By Item,Name,Location" />
-    </div>:""}
       <div className="nav">
         <button onClick={() => setpostType("All")} className={postType === "All" ? "active": ""}>All</button>
         <button onClick={() => setpostType("Found")} className={postType === "Found" ? "active": ""}>Found</button>
