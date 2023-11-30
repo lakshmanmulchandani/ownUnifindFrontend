@@ -7,6 +7,8 @@ import NavPhone from "./components/NavPhone/NavPhone";
 import { useCallback, useEffect, useState } from "react";
 import { getAllPosts } from "./Api/Api";
 import { filterData } from "./utils";
+import axios from "axios";
+import { BACKEND_URL } from "./constants";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
@@ -20,6 +22,76 @@ function App() {
     label: "Newer",
     value: "newer",
   });
+
+  const [name,setname] = useState("")
+  const [email,setemail] = useState("")
+  const [phone,setphone] = useState("")
+  const [orgId,setorgId] = useState("")
+  const [password,setpassword] = useState("")
+  const [id,setId] = useState("")
+
+  
+  useEffect(() => {
+    console.log("data")
+      
+      const getdata = async() =>
+      {
+          
+        let user;
+        console.log("function is triggered")
+          const tokenString = localStorage.getItem('token'); 
+          const token = JSON.parse(tokenString);
+                try {
+                  const api = axios.create({
+              
+                    baseURL: BACKEND_URL, 
+                    headers: {
+                      'Authorization': `Bearer ${token}`,
+                      'Content-Type': 'application/json', 
+                    },
+                  });
+                  
+                  const res = await  api.get(`./user`)
+                   user = res.data.user
+          
+                } catch (error) {
+                  console.log(error.message)
+                }
+
+
+      if (user) {
+          try {
+            
+            const userDataObject = user;
+            console.log(userDataObject)
+            if(userDataObject.userEmail)
+            {
+                setemail(userDataObject.userEmail)
+            }
+            else {
+                setemail("Not Available")
+            }
+            console.log(userDataObject.userName)
+            setorgId(userDataObject.orgId);
+            setname(userDataObject.userName);
+            setphone(userDataObject.phoneNO);
+            setpassword("*******")
+            setId(userDataObject._id)
+            console.log(id)
+        
+            
+          } catch (error) {
+            console.error('Error parsing user data:', error);
+          }
+        }
+        else getdata()
+      }
+    
+  getdata()
+    
+    }, []);
+
+  
   const navigate = useNavigate();
 
   const handleTags = (tags) => {
@@ -141,6 +213,8 @@ function App() {
             setPostingTime: handlePostingTime,
             postingTime,
             filterData,
+            name,
+            setname,email,setemail,orgId,setorgId,phone,setphone,id,setId,password,setpassword
           }}
         />
       </main>
