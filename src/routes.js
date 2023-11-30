@@ -15,24 +15,6 @@ import FoundPost from "./Pages/FoundPost/FoundPost";
 import Profile from "./Pages/User/Profile";
 import Ending from "./Pages/Ending";
 import SearchPage from "./Pages/Feed/SearchPage";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const router = createBrowserRouter([
   {
     path: "/",
