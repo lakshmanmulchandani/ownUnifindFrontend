@@ -1,4 +1,5 @@
 export const filterData = (val, posts, tags, time) => {
+  // console.log("Filtering data...",posts,tags,time);
   const value = val.toLowerCase();
   let d = posts.filter(
     (post) =>
@@ -18,6 +19,7 @@ export const filterData = (val, posts, tags, time) => {
       );
     }
   }
+  // console.log(d);
   return d;
 };
 export const resizeImage = (base64Str, maxWidth = 1024, maxHeight = 720) => {

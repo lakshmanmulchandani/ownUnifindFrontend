@@ -17,9 +17,9 @@ function NavPhone() {
       active: (activelink)=> activelink === "/"
     },
     {
-      link: location.search === "?search=true" ? "/":"/?search=true",
+      link: "/search",
       label: <FaSearch className="icon" />,
-      active: (activelink) => location.search === "?search=true"
+      active: (activelink) => activelink === "/search"
     },
     {
       label: <MdAddBox className="icon icon-big" />,

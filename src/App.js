@@ -74,12 +74,14 @@ function App() {
     fetch();
   };
   useEffect(() => {
-    setFilteredPosts(filterData(searchInput, posts, tags, postingTime.value));
-  }, [posts, tags, postingTime, searchInput]);
-  
-  useEffect(() => {
     fetch();
   }, [fetch]);
+
+  
+  useEffect(() => {
+    setFilteredPosts(filterData("", posts, tags, postingTime.value));
+  }, [posts, tags, postingTime,setFilteredPosts]);
+  
 
   if (token === null) {
     return "loading";
@@ -98,6 +100,7 @@ function App() {
           <input
             value={searchInput}
             onChange={handleSearchInput}
+            onClick={()=>navigate("/search")}
             type="text"
             placeholder="Search By Item,Name,Location"
           />
@@ -127,7 +130,9 @@ function App() {
             searchInput,
             refresh,
             handleSearchInput,
-            posts: filteredPosts,
+            posts : filteredPosts,
+            filteredPosts,
+            setFilteredPosts,
             setPosts,
             setpostType,
             postType,
